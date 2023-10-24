@@ -1,18 +1,21 @@
 package com.xpanxion.assignments.student;
 import java.util.*;
-public class Invoice {
+public class Invoice extends Base{
     private List<Product> productsList;
-
+    private int id; 
     public Invoice(int i){
-        productsList = new ArrayList<>(1);
+        super();
+        id = i; 
+        productsList = new ArrayList<>(); 
+        
     }
 
     public void addProduct(Product p){
-        productsList.add(p); 
+        productsList.add(p);
     }
 
     public double getTotalCost(){
-        int totalCost = 0;
+        double totalCost = 0;
 
         for(Product product: productsList){
             totalCost += product.getCost();
@@ -20,6 +23,5 @@ public class Invoice {
 
         return totalCost;
     }
-
 
 }

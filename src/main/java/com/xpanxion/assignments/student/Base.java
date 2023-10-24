@@ -1,4 +1,6 @@
 package com.xpanxion.assignments.student;
 
-public class Base {
+public abstract class Base{
+    public int id;
+    public Base(){}
 }
