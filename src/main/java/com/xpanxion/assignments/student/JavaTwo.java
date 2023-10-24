@@ -2,6 +2,7 @@ package com.xpanxion.assignments.student;
 
 import java.text.NumberFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class JavaTwo {
     public Scanner sc = new Scanner(System.in);
@@ -67,6 +68,63 @@ public class JavaTwo {
         var repository = new Repository();
         var p = repository.getPerson();
         System.out.println(p);
+    }
+
+    public void ex6(){
+        String choice = "";
+        Calculator calc = new Calculator();
+        do {
+            System.out.print("Enter first number: ");
+            String fn = sc.nextLine();
+            if(fn.equals("done")) break;
+            int firstNumber = Integer.parseInt(fn);
+
+            System.out.print("Enter second number: ");
+            int secondNumber = sc.nextInt();
+            sc.nextLine();
+
+            System.out.print("Enter operation (add, sub, mul, div): ");
+            choice = sc.nextLine();
+
+            switch (choice) {
+                case "add": {
+                    calc.addCalculation(firstNumber + " + " + secondNumber + " = " + (firstNumber + secondNumber));
+                    System.out.println("Result: " + (firstNumber + secondNumber));
+                    break;
+                }
+                case "sub": {
+                    calc.addCalculation(firstNumber + " - " + secondNumber + " = " + (firstNumber - secondNumber));
+                    System.out.println("Result: " + (firstNumber - secondNumber));
+                    break;
+                }
+                case "mul": {
+                    calc.addCalculation(firstNumber + " * " + secondNumber + " = " + (firstNumber * secondNumber));
+                    System.out.println("Result: " + (firstNumber * secondNumber));
+                    break;
+                }
+                case "div": {
+                    calc.addCalculation(firstNumber + " / " + secondNumber + " = " + (firstNumber / secondNumber));
+                    System.out.println("Result: " + (firstNumber / secondNumber));
+                    break;
+                }
+            }
+        } while(!choice.equals("done"));
+
+        calc.printPastCalculations();
+    }
+
+    public void ex7(){
+        var personList = Arrays.asList(
+                new Person(1, "Peter", "Jones"),
+                new Person(2, "John", "Smith"),
+                new Person(3, "Sue", "Anderson")
+        );
+
+        personList.stream().map(person -> person.setAndGetLastName("xxx")).collect(Collectors.toList());
+
+        for(Person p: personList){
+            System.out.println(p);
+        }
     }
 
 
