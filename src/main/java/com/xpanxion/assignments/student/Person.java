@@ -38,10 +38,5 @@ public class Person {
         return "Person{id=" + id + ", firstName='" + firstName + "', lastName='" + lastName + "'}";
     }
 
-    public String setAndGetLastName(String lastName){
-        this.lastName = lastName;
-        return this.lastName;
-    }
-
 
 }

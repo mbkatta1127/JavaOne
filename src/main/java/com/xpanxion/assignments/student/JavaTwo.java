@@ -3,6 +3,7 @@ package com.xpanxion.assignments.student;
 import java.text.NumberFormat;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class JavaTwo {
     public Scanner sc = new Scanner(System.in);
@@ -120,12 +121,61 @@ public class JavaTwo {
                 new Person(3, "Sue", "Anderson")
         );
 
-        personList.stream().map(person -> person.setAndGetLastName("xxx")).collect(Collectors.toList());
+        List<Person> newPersonList = personList.stream().map(person -> new Person(person.getID(), person.getLastName(), "xxx")).collect(Collectors.toList());
 
-        for(Person p: personList){
+        for(Person p: newPersonList){
             System.out.println(p);
         }
     }
 
+    public void ex8(){
+        var personList = Arrays.asList(
+                new Person(1, "Charlie", "Jones"),
+                new Person(2, "Zoey", "Smith"),
+                new Person(3, "Adam", "Anderson")
+        );
+
+        var comparatorLastName = new Comparator<Person>(){
+            @Override
+            public int compare(Person o1, Person o2) {
+                return o1.getLastName().compareTo(o2.getLastName());
+            }
+        };
+
+        personList.sort(comparatorLastName);
+
+
+        for (Person p : personList) {
+            System.out.println(p);
+        }
+
+    }
+
+    public void ex9(){
+        var personList = Arrays.asList(
+                new Person(1, "Charlie", "Jones"),
+                new Person(2, "Zoey", "Smith"),
+                new Person(3, "Adam", "Anderson")
+        );
+
+        List<Person> filteredList = personList.stream().filter(person -> person.getLastName().equals("Smith")).collect(Collectors.toList());
+
+        for (Person p : filteredList) {
+            System.out.println(p);
+        }
+    }
+
+    public void ex10(){
+        Queue<Cat> catQueue = new LinkedList<>();
+        catQueue.add(new Cat("Alice"));
+        catQueue.add(new Cat("Bob"));
+        catQueue.add(new Cat("Charlie"));
+        catQueue.add(new Cat("Dan"));
+
+        do{
+            System.out.println(catQueue.toString());
+            catQueue.remove();
+        } while (!catQueue.isEmpty());
+    }
 
 }
